@@ -12,6 +12,12 @@ export default function Dnd() {
         {id: 6, group: groups[2], value: 'Woofer'},
         {id: 7, group: groups[2], value: 'Cuy'}
     ])
+    const [dragging, setDragging] = useState()
+
+    const handleDragStart = (e) => { 
+        setDragging(e.target)
+        console.log(e.target.innerText)
+    }
 
     return (
         <div className='groups'>
@@ -29,6 +35,8 @@ export default function Dnd() {
                                     key={thing.id}
                                     id={thing.id}
                                     className='thing'
+                                    draggable
+                                    onDragStart={(e) => handleDragStart(e)}
                                 >
                                     {thing.value}
                                 </div>
