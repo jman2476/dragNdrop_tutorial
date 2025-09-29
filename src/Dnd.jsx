@@ -5,13 +5,13 @@ export default function Dnd() {
     // vars and states
     const groups = ['group1', 'group2', 'group3']
     const [items, setItems] = useState([
-        {id: 1, group: groups[0], value: 'Chicken'},
-        {id: 2, group: groups[0], value: 'Monkey'},
-        {id: 3, group: groups[0], value: 'Goose'},
-        {id: 4, group: groups[1], value: 'Cow'},
-        {id: 5, group: groups[1], value: 'Kitty'},
-        {id: 6, group: groups[2], value: 'Woofer'},
-        {id: 7, group: groups[2], value: 'Cuy'}
+        {id: 0, group: groups[0], value: 'Chicken'},
+        {id: 1, group: groups[0], value: 'Monkey'},
+        {id: 2, group: groups[0], value: 'Goose'},
+        {id: 3, group: groups[1], value: 'Cow'},
+        {id: 4, group: groups[1], value: 'Kitty'},
+        {id: 5, group: groups[2], value: 'Woofer'},
+        {id: 6, group: groups[2], value: 'Cuy'}
     ])
     const [dragging, setDragging] = useState()
 
@@ -21,7 +21,9 @@ export default function Dnd() {
         console.log(e.target.innerText)
     }
     const handleDragEnter = (e, group) => {
-        setItems([...items, (items[dragging.id - 1].group = group)])
+        // console.log(items[dragging.id - 1])
+        console.log(dragging)
+        setItems([...items, (items[dragging.id].group = group)])
     }
 
     return (
