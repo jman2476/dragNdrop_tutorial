@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import "./Dnd.css"
 
 export default function Dnd() {
+    // vars and states
     const groups = ['group1', 'group2', 'group3']
     const [items, setItems] = useState([
         {id: 1, group: groups[0], value: 'Chicken'},
@@ -14,9 +15,13 @@ export default function Dnd() {
     ])
     const [dragging, setDragging] = useState()
 
+    // helper functions
     const handleDragStart = (e) => { 
         setDragging(e.target)
         console.log(e.target.innerText)
+    }
+    const handleDragEnter = (e, group) => {
+        setItems([...items, (items[dragging.id - 1].group = group)])
     }
 
     return (
@@ -25,6 +30,7 @@ export default function Dnd() {
                 <div 
                     className='group'
                     key={group}
+                    onDragEnter={(e) => handleDragEnter(e,group)}
                 >
                     <h1 className='title'>{group}</h1>
                     <div>
